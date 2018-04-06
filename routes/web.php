@@ -1,22 +1,29 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Topic;
+use App\User;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('user', function () {
-    return view('user', [
-    	'name' => 'Test'
-    ]);
+Route::get('/user', function () {
+
+	$users = User::all();
+
+    return view('user', compact('users'));
+});
+
+Route::get('/topic', function () {
+
+	$topics = Topic::all();
+
+    return view('topic.index', compact('topics'));
+});
+
+Route::get('/topic/{topic}', function ($id) {
+
+	$topic = Topic::find($id);
+
+    return view('topic.show', compact('topic'));
 });
