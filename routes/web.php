@@ -1,11 +1,6 @@
 <?php
 
-use App\Topic;
 use App\User;
-
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/user', function () {
 
@@ -14,16 +9,10 @@ Route::get('/user', function () {
     return view('user', compact('users'));
 });
 
-Route::get('/topic', function () {
+Route::get('/topic', 'TopicsController@index');
 
-	$topics = Topic::all();
+//Route::get('/topic/{topic}', 'TopicsController@show');
 
-    return view('topic.index', compact('topics'));
-});
+Route::get('/topic/create', 'TopicsController@create');
 
-Route::get('/topic/{topic}', function ($id) {
-
-	$topic = Topic::find($id);
-
-    return view('topic.show', compact('topic'));
-});
+Route::post('/topic', 'TopicsController@store');

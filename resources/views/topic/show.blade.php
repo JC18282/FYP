@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Topic | {{$topic->name}}</title>
-</head>
-<body>
-	<h1>{{ $topic->name }}</h1>
+@extends ('layouts.master')
+
+@section ('content')
+	<h1>{{ $topic->title }}</h1>
 	<br>
 	<p>{{ $topic->content }}</p>
-
-</body>
-</html>
+@endsection

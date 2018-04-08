@@ -15,7 +15,8 @@ class CreateAwnsersTable extends Migration
     {
         Schema::create('awnsers', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->text('body');
+            $table->boolean('correct');
         });
     }
 
