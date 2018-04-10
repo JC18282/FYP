@@ -2,6 +2,8 @@
 
 use App\User;
 
+
+//User
 Route::get('/user', function () {
 
 	$users = User::all();
@@ -9,10 +11,18 @@ Route::get('/user', function () {
     return view('user', compact('users'));
 });
 
-Route::get('/topic', 'TopicsController@index');
 
-//Route::get('/topic/{topic}', 'TopicsController@show');
+//Topic
+Route::get('/topic', 'TopicsController@index');
 
 Route::get('/topic/create', 'TopicsController@create');
 
 Route::post('/topic', 'TopicsController@store');
+
+Route::get('/topic/{topic}', 'TopicsController@show');
+
+
+//Quiz 
+Route::post('/topic/{topic}/quiz', 'QuizzesController@store');
+
+Route::get('/topic/{topic}/quiz/create', 'QuizzesController@create');

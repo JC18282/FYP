@@ -12,6 +12,8 @@ class TopicsController extends Controller
 
 		$topics = Topic::all();
 
+		//dd($topics);
+
 	    return view('topic.index', compact('topics'));
 	}
 
@@ -32,20 +34,26 @@ class TopicsController extends Controller
 	//Stores new topic in db.
 	public function store() {
 
+		//dd(request('title'));		
+
 		$this->validate(request(), [
 			'title' => 'required',
 			'content' => 'required'
 
 		]);
 
-		Topic::create([
+		$newTopic = Topic::create([
 
 			'title' => request('title'),
 			'content' => request('content')
 
 		]);
 
-		return redirect('/topic') ;  	
+
+		$url = '/topic/' . $newTopic->id . '/quiz/create';
+
+
+		return redirect($url);
     	
 	}
 }
