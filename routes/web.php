@@ -25,4 +25,6 @@ Route::get('/topic/{topic}', 'TopicsController@show');
 //Quiz 
 Route::post('/topic/{topic}/quiz', 'QuizzesController@store');
 
+Route::get('/topic/{topic}/quiz', 'QuizzesController@view');
+
 Route::get('/topic/{topic}/quiz/create', 'QuizzesController@create');
