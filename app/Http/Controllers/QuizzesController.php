@@ -10,6 +10,12 @@ use App\Awnser;
 
 class QuizzesController extends Controller
 {
+	public function __construct() {
+
+		$this->middleware('auth');
+
+	}
+
     public function create(Topic $topic) {
 
     	return view('quiz.create', compact('topic'));
@@ -20,19 +26,8 @@ class QuizzesController extends Controller
 
     	$quiz = Quiz::where('topic_id', $topic->id)->get()->first();
     	$questions = Question::where('quiz_id', $quiz->id)->get();
-    	$awnsers = array();
-    	foreach ($questions as $question) {
-    		$awnser = 0;
-    	}
-    	dd();
 
-    	//Awnser::where
-
-    	//$data = [$topic, $quiz, $questions];
-
-    	dd($questions);
-
-    	return view('/topic/' . $topic->id . '/quiz')->with($data);
+    	return view('quiz.view', compact(['topic', 'quiz', 'questions']));
 
     }
 
@@ -85,6 +80,6 @@ class QuizzesController extends Controller
 			$i++;
 		
     	}
-    	return('/topic');
+    	return redirect()->route('topics');
 }
 }

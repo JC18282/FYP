@@ -14,7 +14,7 @@ class Question extends Model
     	return $this->belongsTo(Quiz::class);
     }
 
-    public function awnser() {
+    public function awnsers() {
 
     	return $this->hasMany(Awnser::class);
     }

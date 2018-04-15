@@ -17,7 +17,7 @@ Route::get('/topic', 'TopicsController@index');
 
 Route::get('/topic/create', 'TopicsController@create');
 
-Route::post('/topic', 'TopicsController@store');
+Route::post('/topic', 'TopicsController@store')->name('topics');
 
 Route::get('/topic/{topic}', 'TopicsController@show');
 
@@ -28,3 +28,14 @@ Route::post('/topic/{topic}/quiz', 'QuizzesController@store');
 Route::get('/topic/{topic}/quiz', 'QuizzesController@view');
 
 Route::get('/topic/{topic}/quiz/create', 'QuizzesController@create');
+
+
+//AUTH
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+//Map
+Route::post('/map', 'LocationController@store');
+Route::get('/map', 'LocationController@index');

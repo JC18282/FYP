@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Topic extends Model
 {
     public $timestamps = false;
-    protected $fillable = ['title', 'content'];
+    protected $fillable = ['title', 'description', 'content', 'image'];
 
     public function quiz() {
 

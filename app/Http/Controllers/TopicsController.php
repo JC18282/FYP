@@ -7,6 +7,12 @@ use App\Topic;
 
 class TopicsController extends Controller
 {
+	public function __construct() {
+
+		$this->middleware('auth');
+
+	}
+
 	//Displays all topics in the LMS.
 	public function index() {
 
@@ -32,20 +38,26 @@ class TopicsController extends Controller
 	}
 
 	//Stores new topic in db.
-	public function store() {
+	public function store(Request $request) {
 
 		//dd(request('title'));		
 
 		$this->validate(request(), [
 			'title' => 'required',
+			'description' => 'required',
 			'content' => 'required'
 
 		]);
 
+		$picName = time().'.'.$request->topicImage->getClientOriginalExtension();
+		$request->topicImage->move(base_path('public/images'), $picName);
+
 		$newTopic = Topic::create([
 
 			'title' => request('title'),
-			'content' => request('content')
+			'description' =>request('description'),
+			'content' => request('content'),
+			'image' => $picName
 
 		]);
 

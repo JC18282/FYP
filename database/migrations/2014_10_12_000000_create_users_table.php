@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->text('latitude')->nullable($value = true);
+            $table->text('longitude')->nullable($value = true);
         });
     }
 
