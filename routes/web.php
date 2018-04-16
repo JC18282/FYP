@@ -33,9 +33,14 @@ Route::get('/topic/{topic}/quiz/create', 'QuizzesController@create');
 //AUTH
 Auth::routes();
 
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/', '\App\Http\Controllers\Auth\LoginController@login');
 
 
 //Map
 Route::post('/map', 'LocationController@store');
+
 Route::get('/map', 'LocationController@index');

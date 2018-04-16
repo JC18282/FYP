@@ -13,7 +13,6 @@
                     <h6>Location updated: {{ $user->updated_at->diffForHumans() }}</h6>
                     <a href="/map" class="btn btn-info">Find</a>
                   </div>
-                </div>
               </div>
             </div>
           </div>
