@@ -39,8 +39,7 @@ class TopicsController extends Controller
 
 	//Stores new topic in db.
 	public function store(Request $request) {
-
-		//dd(request('title'));		
+	
 
 		$this->validate(request(), [
 			'title' => 'required',

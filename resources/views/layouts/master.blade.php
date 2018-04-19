@@ -37,7 +37,11 @@
   <body>
 
     <!-- Navigation -->
-    @include ('layouts.nav')
+    @if (Auth::user()->user_type == 'parent')
+      @include ('nav.parentnav')
+    @elseif (Auth::user()->user_type == 'child')
+      @include ('nav.childnav')
+    @endif
 
     <!-- Page Content -->
     @yield ('content')

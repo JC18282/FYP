@@ -3,14 +3,10 @@
 use App\User;
 
 
-//User
-Route::get('/user', function () {
+//Children
+Route::get('/children/create', 'ChildController@create');
 
-	$users = User::all();
-
-    return view('user', compact('users'));
-});
-
+Route::post('/children', 'ChildController@store');
 
 //Topic
 Route::get('/topic', 'TopicsController@index');

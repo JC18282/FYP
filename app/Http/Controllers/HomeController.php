@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -24,7 +25,15 @@ class HomeController extends Controller
      */
     public function index()
     {  
-        $users = User::all();
-        return view('home', compact('users'));
+        $user = Auth::user();
+        if ($user->user_type == 'child') {
+            $parent = $user->parent;
+            return view('home', compact('parent'));
+        } 
+        else {
+            $children = $user->children;
+            return view('home', compact('children'));
+        }
+
     }
 }
