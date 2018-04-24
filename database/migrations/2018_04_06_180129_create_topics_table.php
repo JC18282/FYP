@@ -17,7 +17,7 @@ class CreateTopicsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('description');
-            $table->text('content');
+            $table->longText('content');
             $table->string('image')->nullable($value = true);
         });
     }

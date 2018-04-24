@@ -19,12 +19,12 @@
 
 			<div class="form-group">
 			    <label for="description">Description</label>
-			    <textarea id="description" name="description" class="form-control"></textarea>
+			    <input type="text" id="description" name="description" class="form-control">
 			</div>
 
 			<div class="form-group">
 			    <label for="content">Content</label>
-			    <textarea id="content" name="content" class="form-control" rows="40"></textarea>
+			    <textarea id="summernote" name="content" class="form-control" rows="40"></textarea>
 			</div>
 
 			<div class="form-group">
@@ -38,12 +38,16 @@
 
 		</form>
 
-
-
-
-
 	</div>
 
 </div>
-<!-- required="required" -->
+<script>
+	$(document).ready(function() {
+		$('#summernote').summernote({
+			placeholder: 'Insert content here..',
+        	tabsize: 2,
+       		height: 250
+		});
+	});
+</script>
 @endsection
