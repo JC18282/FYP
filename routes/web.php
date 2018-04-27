@@ -35,7 +35,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', '\App\Http\Controllers\Auth\LoginController@login');
 
-
 //Map
 Route::post('/map', 'LocationController@store');
 

@@ -34,9 +34,6 @@ class QuizzesController extends Controller
 
     public function store(Topic $topic, Request $request) {
 
-
-    	//dd(gettype($request->{'q' . '1' . 'correctawnser' }));
-
     	$newQuiz = Quiz::create([
 
     		'topic_id' => $topic->id,

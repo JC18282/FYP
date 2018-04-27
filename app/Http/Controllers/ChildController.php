@@ -36,7 +36,6 @@ class ChildController extends Controller
 
     public function index() {
 
-
     }
 
     public function create() {
