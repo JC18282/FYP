@@ -12,10 +12,10 @@ class ChildController extends Controller
     public function store() {
 
     	$this->validate(request(), [
-			'name' => 'required',
-			'email' => 'required',
-			'password' => 'required',
-			'gender' => 'required'
+			'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|max:25',
+            'gender' => 'required',
 
 		]);
 

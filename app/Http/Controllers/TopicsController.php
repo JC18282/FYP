@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Topic;
+use Auth;
 
 class TopicsController extends Controller
 {
@@ -31,8 +32,17 @@ class TopicsController extends Controller
 	//Displays topic create form
 	public function create() {
 
-    	return view('topic.create');
-    	
+		if (Auth::user()->user_type == 'admin') {
+
+			return view('topic.create');
+
+		}
+		else {
+
+			return redirect('/home');
+
+		}
+	
 	}
 
 	//Stores new topic in db.
