@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 use App\Topic;
 use App\Quiz;
 use App\Question;
@@ -16,9 +17,33 @@ class QuizzesController extends Controller
 
 	}
 
+    public function edit(Quiz $quiz) {
+
+        if (Auth::user()->hasRole('admin')) {
+
+            return view('home.admin.quiz', compact('quiz'));
+
+        }
+        else {
+
+            return redirect('/home');
+
+        }   
+
+    }
+
     public function create(Topic $topic) {
 
-    	return view('quiz.create', compact('topic'));
+        if (Auth::user()->hasRole('admin')) {
+
+            return view('quiz.create', compact('topic'));
+
+        }
+        else {
+
+            return redirect('/home');
+
+        }
 
     }
 

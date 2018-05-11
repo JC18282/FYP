@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use App\Role;
 use Auth;
 
 class ChildController extends Controller
@@ -23,12 +24,12 @@ class ChildController extends Controller
 
 		$newChild = User::create([
 			'name' => request('name'),
-			'user_type' => 'child',
 			'email' => request('email'),
 			'gender' => request('gender'),
 			'password' => Hash::make(request('password')),
 			'parent_id' => $parent->id
 		]);
+        $newChild->roles()->attach(Role::where('name', 'child')->first());
 
 		return redirect('/home');
 

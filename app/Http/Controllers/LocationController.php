@@ -30,13 +30,13 @@ class LocationController extends Controller
 
 		$signedInUser = Auth::user();
 
-		if ($signedInUser->user_type == 'parent'){
+		if ($signedInUser->hasRole('parent')){
 			$children = $signedInUser->children;
 			Mapper::map($signedInUser->latitude, $signedInUser->longitude);
 			foreach ($children as $child) {
 				Mapper::informationWindow($child->latitude, $child->longitude, $child->name . '<br>' . $child->updated_at->diffForHumans(), ['maxWidth'=> 300, 'open' => 'true', 'title' => 'Title', 'icon' => 'images/pin.png']);
 			}	
-		}elseif ($signedInUser->user_type == 'child') {
+		}elseif ($signedInUser->hasRole('child')) {
 			$parent = $signedInUser->parent;
 			Mapper::map($signedInUser->latitude, $signedInUser->longitude);
 			Mapper::informationWindow($parent->latitude, $parent->longitude, $parent->name . '<br>' . $parent->updated_at->diffForHumans(), ['maxWidth'=> 300, 'open' => 'true', 'title' => 'Title', 'icon' => 'images/pin.png']);

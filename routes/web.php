@@ -18,7 +18,9 @@ Route::post('/topic', 'TopicsController@store')->name('topics');
 Route::get('/topic/{topic}', 'TopicsController@show');
 
 
-//Quiz 
+//Quiz
+Route::get('/quiz/{quiz}','QuizzesController@edit');
+
 Route::post('/topic/{topic}/quiz', 'QuizzesController@store');
 
 Route::get('/topic/{topic}/quiz', 'QuizzesController@view');

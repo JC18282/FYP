@@ -44,10 +44,12 @@
   <body>
 
     <!-- Navigation -->
-    @if (Auth::user()->user_type == 'parent')
+    @if (Auth::user()->hasRole('parent'))
       @include ('nav.parentnav')
-    @elseif (Auth::user()->user_type == 'child')
+    @elseif (Auth::user()->hasRole('child'))
       @include ('nav.childnav')
+    @elseif (Auth::user()->hasRole('admin'))
+      @include ('nav.adminnav')
     @endif
 
     <!-- Page Content -->

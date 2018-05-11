@@ -32,7 +32,7 @@ class TopicsController extends Controller
 	//Displays topic create form
 	public function create() {
 
-		if (Auth::user()->user_type == 'admin') {
+		if (Auth::user()->hasRole('admin')) {
 
 			return view('topic.create');
 

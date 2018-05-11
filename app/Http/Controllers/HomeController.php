@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Topic;
 use Auth;
 
 class HomeController extends Controller
@@ -26,13 +27,19 @@ class HomeController extends Controller
     public function index()
     {  
         $user = Auth::user();
-        if ($user->user_type == 'child') {
+        if ($user->hasRole('child')) {
             $parent = $user->parent;
-            return view('home', compact('parent'));
+            return view('home.index', compact('parent'));
         } 
-        else {
+        elseif ($user->hasRole('parent')) {
             $children = $user->children;
-            return view('home', compact('children'));
+            return view('home.index', compact('children'));
+        }
+        elseif ($user->hasRole('admin')) {
+
+            $topics = Topic::all();
+
+            return view('home.admin.index', compact('topics'));
         }
 
     }
